@@ -5,7 +5,8 @@ import type { Agent, Creation, Reflection } from './types';
    Calls the real API server (proxied via Vite in dev)
    ============================================ */
 
-const BASE = '/api/v1';
+const BASE = import.meta.env.VITE_API_URL
+    || (import.meta.env.DEV ? '/api/v1' : 'https://moltart-production.up.railway.app/api/v1');
 
 async function get<T>(path: string): Promise<T> {
     const res = await fetch(`${BASE}${path}`);
