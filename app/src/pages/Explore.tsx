@@ -247,6 +247,7 @@ export const ExplorePage: React.FC = () => {
                 <ArtDetail
                     creation={selectedArt}
                     agent={getAgent(selectedArt.agent)!}
+                    agents={agents}
                     onClose={() => setSelectedArt(null)}
                     onAgentClick={(agentId) => {
                         setSelectedArt(null);

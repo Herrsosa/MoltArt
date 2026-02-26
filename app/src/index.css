@@ -9,33 +9,33 @@
   --bg-card: #111119;
   --bg-elevated: #161622;
   --bg-hover: #1a1a2e;
-  
+
   --text-primary: #E8E6F0;
   --text-secondary: #E8E6F0A0;
   --text-tertiary: #E8E6F060;
   --text-muted: #E8E6F030;
   --text-ghost: #E8E6F015;
-  
+
   --accent-cyan: #00E5FF;
   --accent-purple: #B388FF;
   --accent-teal: #80CBC4;
   --accent-gold: #FFD600;
   --accent-pink: #E040FB;
   --accent-red: #FF3D00;
-  
+
   --border-subtle: #ffffff06;
   --border-light: #ffffff0A;
   --border-medium: #ffffff12;
   --border-accent: #00E5FF30;
-  
+
   --glass-bg: rgba(10, 10, 15, 0.9);
   --glass-blur: blur(24px);
-  
+
   /* --- Typography --- */
   --font-sans: 'DM Sans', 'Helvetica Neue', -apple-system, sans-serif;
   --font-serif: 'Newsreader', Georgia, serif;
   --font-mono: 'Space Mono', 'Fira Code', monospace;
-  
+
   /* --- Spacing --- */
   --space-xs: 4px;
   --space-sm: 8px;
@@ -44,23 +44,23 @@
   --space-xl: 32px;
   --space-2xl: 48px;
   --space-3xl: 64px;
-  
+
   /* --- Radius --- */
   --radius-sm: 5px;
   --radius-md: 9px;
   --radius-lg: 14px;
   --radius-xl: 20px;
   --radius-full: 50%;
-  
+
   /* --- Shadows --- */
   --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.3);
   --shadow-modal: 0 8px 48px rgba(0, 0, 0, 0.6);
   --shadow-glow-cyan: 0 0 40px rgba(0, 229, 255, 0.08);
-  
+
   /* --- Layout --- */
   --max-width: 1320px;
   --header-height: 60px;
-  
+
   /* --- Transitions --- */
   --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -73,7 +73,9 @@
    Reset & Base
    ============================================ */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -115,12 +117,14 @@ button {
   cursor: pointer;
 }
 
-img, canvas {
+img,
+canvas {
   display: block;
   max-width: 100%;
 }
 
-input, textarea {
+input,
+textarea {
   font: inherit;
   color: inherit;
   border: none;
@@ -154,8 +158,13 @@ input, textarea {
    ============================================ */
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
@@ -163,6 +172,7 @@ input, textarea {
     opacity: 0;
     transform: translateY(16px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -174,6 +184,7 @@ input, textarea {
     opacity: 0;
     transform: translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -181,23 +192,49 @@ input, textarea {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.05); }
-  50% { box-shadow: 0 0 40px rgba(0, 229, 255, 0.12); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.05);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.12);
+  }
 }
 
 .animate-fade-in {
@@ -367,7 +404,7 @@ input, textarea {
   column-gap: var(--space-md);
 }
 
-.masonry > * {
+.masonry>* {
   break-inside: avoid;
   margin-bottom: var(--space-md);
 }
@@ -408,7 +445,10 @@ input, textarea {
   overflow: hidden;
   max-width: 1060px;
   width: 100%;
+  height: 88vh;
   max-height: 88vh;
+  display: flex;
+  flex-direction: column;
   animation: fadeInUp 0.3s ease;
 }
 
@@ -417,12 +457,10 @@ input, textarea {
    ============================================ */
 
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--bg-secondary) 25%,
-    var(--bg-elevated) 50%,
-    var(--bg-secondary) 75%
-  );
+  background: linear-gradient(90deg,
+      var(--bg-secondary) 25%,
+      var(--bg-elevated) 50%,
+      var(--bg-secondary) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: var(--radius-md);

@@ -203,6 +203,7 @@ export const AgentProfilePage: React.FC = () => {
                 <ArtDetail
                     creation={selectedArt}
                     agent={getAgent(selectedArt.agent) ?? agent}
+                    agents={allAgents}
                     onClose={() => setSelectedArt(null)}
                     onAgentClick={(agentId) => {
                         setSelectedArt(null);
