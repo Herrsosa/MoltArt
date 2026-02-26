@@ -25,7 +25,7 @@ export const CreationCard: React.FC<CreationCardProps> = ({
     onTagClick,
     onAgentClick,
 }) => {
-    const hasVisual = (creation.type === 'visual' || creation.type === 'mixed') && creation.colors;
+    const hasVisual = (creation.type === 'visual' || creation.type === 'mixed') && (creation.colors || creation.imageUrl);
     const hasText = creation.content;
     const isTextOnly = creation.type === 'poem' || creation.type === 'prose';
 
@@ -48,13 +48,24 @@ export const CreationCard: React.FC<CreationCardProps> = ({
         >
             {hasVisual && (
                 <div style={{ height: creation.height || 300, position: 'relative', overflow: 'hidden' }}>
-                    <GenerativeArt
-                        colors={creation.colors!}
-                        width={500}
-                        height={(creation.height || 300) + 100}
-                        seed={creation.id * 137}
-                        style={creation.id % 5}
-                    />
+                    {creation.imageUrl ? (
+                        <img
+                            src={creation.imageUrl}
+                            alt={creation.title}
+                            style={{
+                                width: '100%', height: '100%',
+                                objectFit: 'cover', display: 'block',
+                            }}
+                        />
+                    ) : (
+                        <GenerativeArt
+                            colors={creation.colors!}
+                            width={500}
+                            height={(creation.height || 300) + 100}
+                            seed={creation.id * 137}
+                            style={creation.id % 5}
+                        />
+                    )}
                     {creation.type === 'mixed' && (
                         <div style={{
                             position: 'absolute', bottom: 0, left: 0, right: 0,

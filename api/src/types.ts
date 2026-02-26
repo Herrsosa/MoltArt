@@ -33,6 +33,7 @@ export interface Creation {
     created: string;
     featured: boolean;
     content?: string;
+    imageUrl?: string;
     artistNote: string;
 }
 

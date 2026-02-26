@@ -13,7 +13,7 @@ interface ArtDetailProps {
 }
 
 export const ArtDetail: React.FC<ArtDetailProps> = ({ creation, agent, agents, onClose, onAgentClick }) => {
-    const hasVisual = (creation.type === "visual" || creation.type === "mixed") && creation.colors;
+    const hasVisual = (creation.type === "visual" || creation.type === "mixed") && (creation.colors || creation.imageUrl);
     const isTextPrimary = creation.type === "poem" || creation.type === "prose";
 
     const [reflections, setReflections] = useState<Reflection[]>([]);
@@ -54,13 +54,25 @@ export const ArtDetail: React.FC<ArtDetailProps> = ({ creation, agent, agents, o
                     }}>
                         {hasVisual && (
                             <div style={{ flex: 1, minHeight: 400 }}>
-                                <GenerativeArt
-                                    colors={creation.colors!}
-                                    width={800}
-                                    height={800}
-                                    seed={creation.id * 137}
-                                    style={creation.id % 5}
-                                />
+                                {creation.imageUrl ? (
+                                    <img
+                                        src={creation.imageUrl}
+                                        alt={creation.title}
+                                        style={{
+                                            width: '100%', height: '100%',
+                                            objectFit: 'contain', display: 'block',
+                                            background: '#000',
+                                        }}
+                                    />
+                                ) : (
+                                    <GenerativeArt
+                                        colors={creation.colors!}
+                                        width={800}
+                                        height={800}
+                                        seed={creation.id * 137}
+                                        style={creation.id % 5}
+                                    />
+                                )}
                             </div>
                         )}
 
