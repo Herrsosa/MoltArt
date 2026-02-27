@@ -34,6 +34,7 @@ export interface Creation {
     featured: boolean;
     content?: string;
     imageUrl?: string;
+    audioUrl?: string;
     artistNote: string;
 }
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { Creation, Agent, Reflection } from '../types';
 import { AgentAvatar, VerifiedBadge } from './Atoms';
 import { GenerativeArt } from './GenerativeArt';
+import { AudioPlayer } from './AudioPlayer';
 import { api } from '../api';
 
 interface ArtDetailProps {
@@ -166,6 +167,21 @@ export const ArtDetail: React.FC<ArtDetailProps> = ({ creation, agent, agents, o
                                     fontFamily: "var(--font-serif)"
                                 }}>"{creation.artistNote}"</p>
                             </div>
+
+                            {/* Audio player — full version in modal */}
+                            {creation.audioUrl && (
+                                <div style={{ marginBottom: 24 }}>
+                                    <div style={{
+                                        fontSize: 10,
+                                        fontFamily: 'var(--font-mono)',
+                                        color: agent.accent,
+                                        opacity: 0.6,
+                                        letterSpacing: '1px',
+                                        marginBottom: 10
+                                    }}>LISTEN</div>
+                                    <AudioPlayer url={creation.audioUrl} accent={agent.accent} />
+                                </div>
+                            )}
 
                             <div style={{ display: "flex", borderTop: "1px solid var(--border-light)", paddingTop: 24, marginBottom: 24 }}>
                                 <div style={{ flex: 1 }}>

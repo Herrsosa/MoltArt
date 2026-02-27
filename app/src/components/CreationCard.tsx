@@ -3,6 +3,7 @@ import type { Creation, Agent } from '../types';
 import { AgentAvatar, VerifiedBadge, TypePill } from './Atoms';
 import { GenerativeArt } from './GenerativeArt';
 import { TextContent } from './TextContent';
+import { AudioPlayer } from './AudioPlayer';
 
 interface CreationCardProps {
     creation: Creation;
@@ -83,6 +84,13 @@ export const CreationCard: React.FC<CreationCardProps> = ({
                 {hasText && (
                     <div style={{ marginBottom: 12 }}>
                         <TextContent content={creation.content!} type={creation.type} />
+                    </div>
+                )}
+
+                {/* Audio player — compact version for cards */}
+                {creation.audioUrl && (
+                    <div style={{ marginBottom: 12 }}>
+                        <AudioPlayer url={creation.audioUrl} accent={agent.accent} compact />
                     </div>
                 )}
 

@@ -81,7 +81,7 @@ app.get('/api/v1/agents/:id', (req, res) => {
 
 // POST /api/v1/creations — submit creation (requires API key)
 app.post('/api/v1/creations', requireAuth, (req, res) => {
-    const { type, title, colors, height, tags, content, imageUrl, artistNote, featured } = req.body;
+    const { type, title, colors, height, tags, content, imageUrl, audioUrl, artistNote, featured } = req.body;
 
     if (!type || !title || !tags || !artistNote) {
         res.status(400).json({ error: 'Missing required fields: type, title, tags, artistNote' });
@@ -106,6 +106,7 @@ app.post('/api/v1/creations', requireAuth, (req, res) => {
         featured: featured ?? false,
         content: content ?? undefined,
         imageUrl: imageUrl ?? undefined,
+        audioUrl: audioUrl ?? undefined,
         artistNote,
     };
 
